@@ -204,6 +204,24 @@ ul#questions li{
     background:#e6e6e6;
 }
 
+/* Question */
+.question p{
+    list-style: none;
+    padding:20px;
+    border: #cccccc solid 1px;
+    margin-bottom:5px;
+    background:#e6e6e6;
+}
+
+/* Answer */
+/* .answers p{
+    list-style: none;
+    padding:20px;
+    border: #cccccc solid 1px;
+    margin-bottom:5px;
+    background:#7c4343;
+} */
+
 footer{
     padding:20px;
     margin-top:20px;
