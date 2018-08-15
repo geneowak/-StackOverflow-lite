@@ -13,6 +13,33 @@ body{
     overflow:hidden;
 }
 
+/* Showcase */
+#showcase{
+  min-height:400px;
+  background:url('../img/showcase.jpg') no-repeat 0 -400px;
+  text-align:center;
+  color:#ffffff;
+  margin: 0;
+}
+
+#showcase h1{
+  margin-top:100px;
+  font-size:55px;
+  margin-bottom:10px;
+}
+
+#showcase p{
+  font-size:20px;
+}
+
+.showcase_footer{
+    padding:10px;
+    margin-top: 0;
+    color:#ffffff;
+    background-color:darkgreen;
+    text-align: center;
+}
+
 ul{
     margin:0;
     padding:0;
