@@ -29,7 +29,7 @@ ul{
 
 .dark{
     padding:15px;
-    background:#3a3119;
+    background:black;
     color:#ffffff;
     margin-top:10px;
     margin-bottom:10px;
@@ -37,12 +37,12 @@ ul{
 
 /* Header */
 header{
-    background:#3a3119;
+    background:rgb(29, 83, 7);
     color:#ffffff;
     padding-top:10px;
     min-height:60px;
     /* color width style */
-    border-bottom:#ff9317 3px solid;
+    border-bottom:darkgray 3px solid;
 }
 
 header a{/* links in the header */
@@ -80,6 +80,19 @@ header .highlight, header .current a{
 header a:hover{
     color:#cccccc;
     font-weight:bold;
+}
+
+/* some utils */
+.margin0 {
+    margin: 0;
+}
+
+.askbtn {
+    width: 20%;
+}
+
+.width100 {
+    width: 100%
 }
 
 /* Input Forms */
@@ -196,6 +209,10 @@ article#main-col{
 }
 
 /* Questions */
+#questions{
+    margin-top:40px
+}
+
 ul#questions li{
     list-style: none;
     padding:20px;
@@ -223,10 +240,10 @@ ul#questions li{
 } */
 
 footer{
-    padding:20px;
+    padding:10px;
     margin-top:20px;
     color:#ffffff;
-    background-color:#e8491d;
+    background-color:darkgreen;
     text-align: center;
 }
 
