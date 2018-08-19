@@ -42,13 +42,14 @@ class QuestionList(Resource):
         )
 
         data = parser.parse_args()
-        question = {
-            'id': time.time(), #using timestamps as ids
-            "title": data['title'],
-            "body": data['body'],
-            "answers": []
-        }
-        Question.add_question(question)
+        # using timestamps as ids
+        timestamp = time.time()
+        question = Question(timestamp, data['title'], data['body'])
+
+        try:
+            Question.add_question(question)
+        except:
+            return {'message': 'There was a problem adding the question'}, 500
 
         return {'message': 'Question was successfully created'}, 201
 
