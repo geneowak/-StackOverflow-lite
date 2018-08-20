@@ -1,29 +1,7 @@
 
 class Question:
 
-    questions = [
-        {
-            'id': 1,
-            "title": "How do I become the best programmer in the universe?",
-            "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus quis sapien eu tempor.",
-            "answers": [],
-            "comments": []
-        },
-        {
-            'id': 2,
-            "title": "How do I join Andela?",
-            "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus quis sapien eu tempor.",
-            "answers": [],
-            "comments": []
-        },
-        {
-            'id': 3,
-            "title": "How can I hack into the C.I.A?",
-            "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus quis sapien eu tempor.",
-            "answers": [],
-            "comments": []
-        }
-    ]
+    questions = []
 
     def __init__(self, _id, title, body):
         self.id = _id

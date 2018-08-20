@@ -1,26 +1,7 @@
 from .question import Question
 
 class Answer:
-    answers = [
-        {
-            'id': 1,
-            "qn_id": 1,
-            "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus quis sapien eu tempor.",
-            "comments": []
-        },
-        {
-            'id': 2,
-            "qn_id": 2,
-            "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus quis sapien eu tempor.",
-            "comments": []
-        },
-        {
-            'id': 3,
-            "qn_id": 2,
-            "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus quis sapien eu tempor.",
-            "comments": []
-        }
-    ]
+    answers = []
     
     def __init__(self, _id, body, qn_id):
         self.id = _id

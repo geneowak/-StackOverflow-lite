@@ -24,7 +24,8 @@ class Questions(Resource):
 class QuestionList(Resource):
     # get all the available questions
     def get(self):
-        return {'questions': Question.get_questions()}
+        return {'questions': Question.get_questions()}, 200
+        
     # add a question
     def post(self):
         parser = reqparse.RequestParser()
