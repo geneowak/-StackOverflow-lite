@@ -1,6 +1,6 @@
 from flask import jsonify
 from flask_restful import Resource, reqparse
-from models.answer import Answer
+from API.models.answer import Answer
 import time
 
 # load the answers from Model....
