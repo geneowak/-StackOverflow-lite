@@ -1,6 +1,8 @@
 from flask import jsonify
 from flask_restful import Resource, reqparse
 from API.models.answer import Answer
+from API.models.question import Question
+from .utilities import clean_input
 import time
 
 # load the answers from Model....
@@ -18,6 +20,10 @@ class Answers(Resource):
             questionId = float(questionId)
         except:
             return { "message": "The question id should be a float"}, 400
+        
+        # check if the question exists
+        if not Question.get_question_by_id(questionId):
+            return {"message": "Sorry, that question doesn't exist"}, 400
 
         parser = reqparse.RequestParser()
         parser.add_argument(
@@ -28,14 +34,16 @@ class Answers(Resource):
         )
 
         data = parser.parse_args()
-        # answer = {
-        #     'id': time.time(),  # using timestamps as ids
-        #     "qn_id": data['qn_id'],
-        #     "body": data['body'],
-        #     "comments": []
-        # }
-        timestamp = time.time()
-        answer = Answer(timestamp,  data['body'], questionId)
+        ''' validate data sent '''
+        if not clean_input(data['body']):
+            return {'message': 'The body should be a string'}, 400
+        
+        ''' validate that the question hasn't been asked before '''
+        if Answer.check_ans_body(data['body'], questionId):
+            return {'message': 'Sorry, that answer has already been given'}, 400
+        # setting ids
+        ans_id = Answer.get_no_of_ans() + 1
+        answer = Answer(ans_id,  data['body'], questionId)
         try:
             if Answer.add_answer(answer) == True:
                 return {'message': 'Your answer was successfully added'}, 201

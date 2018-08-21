@@ -58,7 +58,29 @@ class Question:
         for qn in cls.questions:
             qn['answers'].extend(Answer.get_answers_by_qn_id(qn['id']))
 
-
     @classmethod
     def get_questions(cls):
         return cls.questions
+
+    @classmethod
+    def get_no_of_qns(cls):
+        return len(cls.questions)
+
+    @classmethod
+    def check_qn_title(cls, title):
+        ''' check if a question has been asked before '''
+        for qn in cls.questions:
+            # qn_title = 
+            if (qn['title']).lower() == title.lower():
+                return True
+        return False
+
+    @classmethod
+    def check_qn_body(cls, body):
+        ''' check if a question has been asked before '''
+        for qn in cls.questions:
+            if (qn['body']).lower() == body.lower():
+                return True
+        return False
+
+    # @classmethod

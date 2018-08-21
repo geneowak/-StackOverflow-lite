@@ -43,3 +43,15 @@ class Answer:
     def get_answers_by_qn_id(cls, qn_id):
         return list(filter(lambda ans: ans['qn_id'] == qn_id, cls.answers))
         
+    @classmethod
+    def get_no_of_ans(cls):
+        return len(cls.answers)
+
+    @classmethod
+    def check_ans_body(cls, body, qn_id):
+        ''' check if an answer has already been given '''
+        for ans in cls.answers:
+            if str(ans['qn_id']) == str(qn_id):
+                if ans['body'].lower() == body.lower():
+                    return True
+        return False
