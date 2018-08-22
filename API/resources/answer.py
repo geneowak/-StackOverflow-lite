@@ -10,13 +10,11 @@ answers = Answer.get_answers()
 
 
 class Answers(Resource):
-    # add a answer given its ID
-    def get(self):
-        pass
 
     def post(self, questionId):
-        # check if the submitted questionId is in the expected format
+        
         try:
+            # check if the submitted questionId is in the expected format
             questionId = float(questionId)
         except:
             return { "message": "The question id should be a float"}, 400
@@ -43,6 +41,7 @@ class Answers(Resource):
             return {'message': 'Sorry, that answer has already been given'}, 400
         # setting ids
         ans_id = Answer.get_no_of_ans() + 1
+
         answer = Answer(ans_id,  data['body'], questionId)
         try:
             if Answer.add_answer(answer) == True:
@@ -52,24 +51,8 @@ class Answers(Resource):
 
         return {'message': 'There was a problem adding the answer'}, 500
 
-    def put(self):
-        pass
-
-    def delete(self):
-        pass
-
 
 class AnswerList(Resource):
     # get all the available answers
     def get(self):
         return {'answers': Answer.get_answers()}
-    # add a answer
-
-    def post(self):
-        pass
-
-    def put(self):
-        pass
-
-    def delete(self):
-        pass

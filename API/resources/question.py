@@ -4,30 +4,22 @@ from API.models.question import Question
 from .utilities import clean_input
 
 class Questions(Resource):
-    # add a question given its ID
+    
     def get(self, questionId):
         qn = Question.get_question_by_id(questionId)
         if qn:
             return { 'question': qn }, 200
         return { 'message': 'Question not found' }, 404
 
-    def post(self):
-        pass
-
-    def put(self):
-        pass
-
-    def delete(self):
-        pass
-
 
 class QuestionList(Resource):
-    # get all the available questions
+    
     def get(self):
+        ''' this method gets all the questions on the platform '''
         return {'questions': Question.get_questions()}, 200
         
-    # add a question
     def post(self):
+        ''' this method add a question '''
         parser = reqparse.RequestParser()
         parser.add_argument(
             'title', 
@@ -65,9 +57,3 @@ class QuestionList(Resource):
             return {'message': 'There was a problem adding the question'}, 500
 
         return {'message': 'Question was successfully created'}, 201
-
-    def put(self):
-        pass
-
-    def delete(self):
-        pass

@@ -1,6 +1,7 @@
 from .question import Question
 
 class Answer:
+    ''' this class will handle all the data processing for answers '''
     answers = []
     
     def __init__(self, _id, body, qn_id):
@@ -18,7 +19,8 @@ class Answer:
 
     @classmethod
     def add_answer(cls, answer):
-        # first check if the question exists
+        ''' this first checks if a question exists and if it does, it adds an answer to it
+        True is returned for success and False when it fails to add the answer '''
         if Question.get_question_by_id(answer.qn_id):
             ans ={
                 "id": answer.id,
@@ -29,8 +31,7 @@ class Answer:
             cls.answers.append(ans)
             try:
                 Question.add_answer(answer.qn_id, ans)
-            except:
-                # return {'message': 'There was a problem adding an answer to the question'}, 500            
+            except:           
                 return False
             return True
         return False

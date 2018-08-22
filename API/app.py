@@ -17,6 +17,9 @@ GET /questions/<questionId> Fetch a specific question
 POST /questions Add a question
 POST /questions/<questionId>/answers Add an answer
 
+POST /questions/<questionId>/comments Add an add a comment to a question
+POST /answers/<answerId>/comments Add an add a comment to an answer
+
  '''
 @app.before_first_request
 def load_data():
