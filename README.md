@@ -51,11 +51,11 @@ These are the endpoints that are currently available
 |__Type__| __Endpoint__ | __What the endpoint does__ |
 |------|-------------|------------|
 |GET|  /api/v1/questions       | Fetch all questions     |
-|GET| /api/v1/questions/<string:questionId>        | Fetch a specific question |
+|GET| /api/v1/questions/\<string:questionId\>        | Fetch a specific question |
 |POST|  /api/v1/questions       | Add a question     |
-|POST|  /api/v1questions/<string:questionId>/answers       | Add an answer     |
-|POST|  /api/v1/questions/<string:questionId>/comments       | Add a comment to a question     |
-|POST|  /api/v1/answers/<string:answerId>/comments        | Add a comment to an answer     |
+|POST|  /api/v1questions/\<string:questionId\>/answers       | Add an answer     |
+|POST|  /api/v1/questions/\<string:questionId\>/comments       | Add a comment to a question     |
+|POST|  /api/v1/answers/\<string:answerId\>/comments        | Add a comment to an answer     |
 
 ## Running the tests
 
@@ -77,7 +77,7 @@ pip install pytest-xdist
 Then navigate to the root of your directory and run the following commands
 
 ```
-py.test --cov=API tests/
+py.test --cov=API API/tests/
 ```
 
 ## Built With
