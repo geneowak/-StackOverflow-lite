@@ -8,13 +8,15 @@ class Question:
         self.title = title
         self.body = body
         self.answers = []
+        self.comments = []
 
     def json(self):
         return {
             "id": self.id,
             "title": self.title,
             "body": self.body,
-            "answers": self.answers
+            "answers": self.answers,
+            "comments": self.comments
         }
 
     @classmethod
@@ -23,7 +25,8 @@ class Question:
             'id': data.id,  # using timestamps as ids
             "title": data.title,
             "body": data.body,
-            "answers": []
+            "answers": [],
+            "comments": []
         }
         print(question)
         cls.questions.append(question)
@@ -40,6 +43,15 @@ class Question:
         return False
 
     @classmethod
+    def add_comment (cls, questionId, comment):
+        question = cls.get_question_by_id(questionId)
+
+        if question:
+            question['comments'].append(comment)
+            return True
+        return False
+
+    @classmethod
     def get_question_by_id(cls, questionId):
         try:
             # check if question id is in required format
@@ -47,7 +59,7 @@ class Question:
         except:
             return None
         for qn in cls.questions:
-            if float(qn['id']) == questionId:
+            if float(qn['id']) == float(questionId):
                 return qn
         return None
 

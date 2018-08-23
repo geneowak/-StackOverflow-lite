@@ -3,7 +3,6 @@ from flask_restful import Resource, reqparse
 from API.models.answer import Answer
 from API.models.question import Question
 from .utilities import clean_input
-import time
 
 # load the answers from Model....
 answers = Answer.get_answers()
@@ -12,7 +11,7 @@ answers = Answer.get_answers()
 class Answers(Resource):
 
     def post(self, questionId):
-        
+        ''' method to add an answer '''
         try:
             # check if the submitted questionId is in the expected format
             questionId = float(questionId)
@@ -53,6 +52,7 @@ class Answers(Resource):
 
 
 class AnswerList(Resource):
-    # get all the available answers
+    
     def get(self):
+        ''' method get all the available answers '''
         return {'answers': Answer.get_answers()}

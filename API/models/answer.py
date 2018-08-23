@@ -37,6 +37,14 @@ class Answer:
         return False
 
     @classmethod
+    def add_comment(cls, answerId, comment):
+        answer = cls.get_answer_by_id(answerId)
+        if answer:
+            answer['comments'].append(comment)
+            return True
+        return False
+
+    @classmethod
     def get_answers(cls):
         return cls.answers
 
@@ -56,3 +64,15 @@ class Answer:
                 if ans['body'].lower() == body.lower():
                     return True
         return False
+
+    @classmethod
+    def get_answer_by_id(cls, answerId):
+        try:
+            # check if answer id is in required format
+            answerId = float(answerId)
+        except:
+            return None
+        for ans in cls.answers:
+            if float(ans['id']) == answerId:
+                return ans
+        return None

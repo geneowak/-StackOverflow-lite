@@ -3,6 +3,7 @@ from flask_restful import Api
 
 from API.resources.question import Questions, QuestionList
 from API.resources.answer import Answers, AnswerList
+from API.resources.comment import CommentList, QuestionComments, AnswerComments
 from API.models.question import Question
 
 app = Flask(__name__)
@@ -30,4 +31,7 @@ api.add_resource(Questions, '/api/v1/questions/<string:questionId>')
 api.add_resource(QuestionList, '/api/v1/questions')
 api.add_resource(AnswerList, '/api/v1/answers')
 api.add_resource(Answers, '/api/v1/questions/<string:questionId>/answers')
+api.add_resource(CommentList, '/api/v1/comments')
+api.add_resource(QuestionComments, '/api/v1/questions/<string:questionId>/comments')
+api.add_resource(AnswerComments, '/api/v1/answers/<string:answerId>/comments')
 

@@ -1,6 +1,6 @@
 # StackOverflow-lite
 
-[![Build Status](https://travis-ci.com/geneowak/-StackOverflow-lite.svg?branch=version_1)](https://travis-ci.com/geneowak/-StackOverflow-lite) 
+[![Build Status](https://travis-ci.com/geneowak/-StackOverflow-lite.svg?branch=version_1)](https://travis-ci.com/geneowak/-StackOverflow-lite)
 [![Coverage Status](https://coveralls.io/repos/github/geneowak/-StackOverflow-lite/badge.svg?branch=version_1)](https://coveralls.io/github/geneowak/-StackOverflow-lite?branch=version_1)
 [![Maintainability](https://api.codeclimate.com/v1/badges/38f513cdfe1984e4be8a/maintainability)](https://codeclimate.com/github/geneowak/-StackOverflow-lite/maintainability)
 
@@ -51,18 +51,18 @@ These are the endpoints that are currently available
 |__Type__| __Endpoint__ | __What the endpoint does__ |
 |------|-------------|------------|
 |GET|  /api/v1/questions       | Fetch all questions     |
-|GET| /api/v1/questions/\<string:questionId\>        | Fetch a specific question |
+|GET| /api/v1/questions/\<int:questionId\>        | Fetch a specific question |
 |POST|  /api/v1/questions       | Add a question     |
-|POST|  /api/v1questions/\<string:questionId\>/answers       | Add an answer     |
-|POST|  /api/v1/questions/\<string:questionId\>/comments       | Add a comment to a question     |
-|POST|  /api/v1/answers/\<string:answerId\>/comments        | Add a comment to an answer     |
+|POST|  /api/v1questions/\<int:questionId\>/answers       | Add an answer     |
+|POST|  /api/v1/questions/\<int:questionId\>/comments       | Add a comment to a question     |
+|POST|  /api/v1/answers/\<int:answerId\>/comments        | Add a comment to an answer     |
 
 ## Running the tests
 
 Tests can be run by running the command below at the root of the project directory
 
 ```
-if not installed run "pip install pytest" to install pytest 
+if not installed run "pip install pytest" to install pytest
 then "pytest" to run the test
 ```
 
