@@ -9,3 +9,19 @@ def clean_input(text):
     chars = string.whitespace + string.punctuation + string.digits
     # remove the characters and return the result
     return text.strip(chars)
+
+def check_title_length(text):
+    ''' this method verifies that the title length '''
+    text = str(text)
+
+    if len(text) < 8:
+        return True
+    return False
+
+def check_body_length(text):
+    ''' this method verifies that the title length '''
+    text = str(text)
+
+    if len(text) < 15:
+        return True
+    return False

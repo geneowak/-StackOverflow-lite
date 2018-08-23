@@ -1,7 +1,7 @@
 from flask import jsonify
 from flask_restful import Resource, reqparse
 from API.models.question import Question
-from .utilities import clean_input
+from .utilities import clean_input, check_body_length, check_title_length
 
 class Questions(Resource):
     
@@ -37,9 +37,15 @@ class QuestionList(Resource):
         ''' validate data sent '''
         if not clean_input(data['title']):
             return {'message': 'The title should be a string'}, 400
+        
+        if not check_title_length(data['title']):
+            return {'message': 'The title should be at least 8 characters'}, 400
 
         if not clean_input(data['body']):
             return {'message': 'The body should be a string'}, 400
+            
+        if not check_body_length(data['body']):
+            return {'message': 'The body should be atleast 15 characters'}, 400
             
         ''' validate that the question hasn't been asked before '''
         if Question.check_qn_title(data['title']):

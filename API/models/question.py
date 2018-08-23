@@ -82,7 +82,6 @@ class Question:
     def check_qn_title(cls, title):
         ''' check if a question has been asked before '''
         for qn in cls.questions:
-            # qn_title = 
             if (qn['title']).lower() == title.lower():
                 return True
         return False
