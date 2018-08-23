@@ -1,9 +1,9 @@
-[run]
-source=
-   ./API/
+[report]=
+show_missing=True
 omit=
-   ./venv/*,
+   ./venv/*
    ./UI/*
-   ./API/tests/*,
+   ./API/tests/*
+   */API/models/*
    ./API*\__init__.py
    

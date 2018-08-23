@@ -106,4 +106,4 @@ class CommentList(Resource):
 
     def get(self):
         ''' method get all the available answers '''
-        return {'Comments': Comment.get_comments()}
+        return {'comments': Comment.get_comments()}
