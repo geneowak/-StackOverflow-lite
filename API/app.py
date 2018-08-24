@@ -7,7 +7,7 @@ from API.resources.comment import CommentList, QuestionComments, AnswerComments
 from API.models.question import Question
 
 app = Flask(__name__)
-app.secret_key = "AndelA11"
+
 api = Api(app)
 
 ''' 
@@ -28,9 +28,9 @@ def load_data():
     Question.load_all_qns()
 
 
-@app.route('/api/v1/')
+@app.route('/')
 def get_def_page():
-   render_template('index.html')
+   return render_template('index.html')
 
 api.add_resource(Questions, '/api/v1/questions/<string:questionId>')
 api.add_resource(QuestionList, '/api/v1/questions')

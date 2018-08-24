@@ -1,5 +1,6 @@
 import unittest
 from API.app import app
+from API.config import app_config
 from API.resources.question import QuestionList
 from API.models.question import Question
 from API.models.answer import Answer
@@ -10,7 +11,7 @@ class BaseCase(unittest.TestCase):
 
     def setUp(self):
         ''' this method sets up the client and the test data we'll be using in the tests '''
-        app.config['TESTING'] = True
+        app.config.from_object(app_config['testing'])
         self.client = app.test_client()
         self.add_question_url = '/api/v1/questions'
         self.get_questions_url = '/api/v1/questions'
