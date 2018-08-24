@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from flask_restful import Api
 
 from API.resources.question import Questions, QuestionList
@@ -26,6 +26,11 @@ POST /answers/<answerId>/comments Add an add a comment to an answer
 def load_data():
     #  first load all the questions with their repective answers
     Question.load_all_qns()
+
+
+@app.route('/api/v1/')
+def get_def_page():
+   render_template('index.html')
 
 api.add_resource(Questions, '/api/v1/questions/<string:questionId>')
 api.add_resource(QuestionList, '/api/v1/questions')

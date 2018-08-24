@@ -53,9 +53,11 @@ These are the endpoints that are currently available
 |GET|  /api/v1/questions       | Fetch all questions     |
 |GET| /api/v1/questions/\<int:questionId\>        | Fetch a specific question |
 |POST|  /api/v1/questions       | Add a question     |
-|POST|  /api/v1questions/\<int:questionId\>/answers       | Add an answer     |
+|POST|  /api/v1/answers       | Get answers     |
+|GET|  /api/v1/questions/\<int:questionId\>/answers       | Add an answer     |
 |POST|  /api/v1/questions/\<int:questionId\>/comments       | Add a comment to a question     |
 |POST|  /api/v1/answers/\<int:answerId\>/comments        | Add a comment to an answer     |
+|GET|  /api/v1/comments        | Get comments     |
 
 ## Running the tests
 

@@ -77,15 +77,15 @@ class BaseCase(unittest.TestCase):
         ''' this method tests to ensure that a question isn't asked more than once '''
         with self.client as client:
             # post a question
-            request = client.post(self.add_question_url, data={'title':'title1', 'body':'body1'})
+            request = client.post(self.add_question_url, data={'title':'title1 of question1', 'body':'body1 with of question1 of test'})
             self.assertEqual(request.status_code, 201)
             # check with repeated question title
-            request = client.post(self.add_question_url, data={'title':'title1', 'body':'body2'})
+            request = client.post(self.add_question_url, data={'title':'title1 of question1', 'body':'body1 with of question1 of test'})
             self.assertEqual(request.status_code, 400)
             response = json.loads(request.data.decode())
             self.assertIn("Sorry, a question with that title has already been asked", response['message'])
             # check with repeated question body
-            request = client.post(self.add_question_url, data={'title':'title2', 'body':'body1'})
+            request = client.post(self.add_question_url, data={'title':'title2 of question1', 'body':'body1 with of question1 of test'})
             self.assertEqual(request.status_code, 400)
             response = json.loads(request.data.decode())
             self.assertIn("Sorry, a question with that body has already been asked", response['message'])
@@ -94,15 +94,33 @@ class BaseCase(unittest.TestCase):
         ''' this method tests if for if app rejects non string bodies for the question '''
         with self.client as client:
             # check with empty body
-            request = client.post(self.add_question_url, data={ "title": "tiltle", "body": " "})
+            request = client.post(self.add_question_url, data={ "title": "tiltle of a question", "body": " "})
             self.assertEqual(request.status_code, 400)
             response = json.loads(request.data.decode())
             self.assertIn("The body should be a string", response['message'])
             # check with numbers only
-            request = client.post(self.add_question_url, data={ "title": "tiltle", "body": "2374 47456"})
+            request = client.post(self.add_question_url, data={ "title": "tiltle of a questions", "body": "2374 47456 28837473282827"})
             self.assertEqual(request.status_code, 400)
             response = json.loads(request.data.decode())
             self.assertIn("The body should be a string", response['message'])
+
+    def test_title_length(self):
+        ''' this method checks if the title length is as expected '''
+        with self.client as client:
+            # add a questions
+            request = client.post(self.add_question_url, data={ "title": "title", "body": "some super long body some question"})
+            response = json.loads(request.data.decode())
+            self.assertIn("The title should be at least 8 characters", response['message'])
+            self.assertEqual(request.status_code, 400)
+
+    def test_body_length(self):
+        ''' this method checks if the body length is as expected '''
+        with self.client as client:
+            # add a questions
+            request = client.post(self.add_question_url, data={ "title": "some good title", "body": "short body "})
+            response = json.loads(request.data.decode())
+            self.assertIn("The body should be atleast 15 characters", response['message'])
+            self.assertEqual(request.status_code, 400)
 
     def tearDown(self):
         ''' this method clears all the data that was used for the test '''

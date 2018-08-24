@@ -15,13 +15,13 @@ def check_title_length(text):
     text = str(text)
 
     if len(text) < 8:
-        return True
-    return False
+        return False
+    return True
 
 def check_body_length(text):
     ''' this method verifies that the title length '''
     text = str(text)
 
     if len(text) < 15:
-        return True
-    return False
+        return False
+    return True
